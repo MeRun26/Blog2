@@ -1,3 +1,9 @@
+npm run server
+для запуска JSON server
+
+npm run start
+для запуска проекта
+
 Области хранения данных:
 
 - база данных на json-server
