@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { Header } from "./components";
+import { Header, Footer } from "./components";
 import styled from "styled-components";
 
 const Content = styled.div`
@@ -20,12 +20,6 @@ const H2 = styled.h2`
 	text-align: center;
 `;
 
-// const Footer = () => <div>FOOTER</div>;
-
-// const Footer = styled(Footer)`
-// 	position: fixed;
-// `;
-
 export const Blog = () => {
 	return (
 		<AppColumn>
@@ -42,7 +36,7 @@ export const Blog = () => {
 					<Route path="*" element={<div>ОШИБКА</div>} />
 				</Routes>
 			</Content>
-			{/* <Footer /> */}
+			<Footer />
 		</AppColumn>
 	);
 };
