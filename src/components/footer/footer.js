@@ -24,11 +24,16 @@ const FooterContainer = ({ className }) => {
 				<div>web@developer.kg</div>
 			</div>
 			<div>
-				{city},{" "}
-				{new Date().toLocaleDateString("ru", { day: "numeric", month: "long" })}
-			</div>
-			<div>
-				{temperature} градусов, {weather}
+				<div>
+					{city},{" "}
+					{new Date().toLocaleDateString("ru", {
+						day: "numeric",
+						month: "long",
+					})}
+				</div>
+				<div>
+					{temperature} градусов, {weather}
+				</div>
 			</div>
 		</div>
 	);
