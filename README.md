@@ -1,70 +1,36 @@
-# Getting Started with Create React App
+npm run server
+для запуска JSON server
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+npm run start
+для запуска проекта
 
-## Available Scripts
+Области хранения данных:
 
-In the project directory, you can run:
+- база данных на json-server
+- BFF
+- redux store
 
-### `npm start`
+Сущности приложения:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Пользователь: БД (список пользователей), BFF (сессия текущего), стор (отображение в браузере)
+- Роль пользователя: БД (список ролей), BFF (сессия пользователя с ролью), стор (использовние на клиенте)
+- Статья: БД(список статей), стор(отображение в браузере)
+- Комментарий: БД(список комментариев), стор(отображение в браузере)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Таблицы БД:
 
-### `npm test`
+- Пользователи - users: id/login/password/registred_at/role_id
+- Роли - roles: id/name
+- Статьи - posts: id/title/image_url/content/published_at
+- Комментарии - comments: id/author_id/post_id/content
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Схема состояния BFF:
 
-### `npm run build`
+- сессия текущего пользователя: login/password/role
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Схема для Redux Store(на клиенте):
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- user: id/login/roleId/session
+- posts: массив post: id/title/imageUrl/publishedAt/commentsCount
+- post: id/title/imageUrl/content/publishedAt/comments: массив comment: id/author/content/publishedAt
+- users: массив user: id/login/registredAt/role
